@@ -1,0 +1,22 @@
+{
+  "name": "beyntech/php-kafka-consumer",
+  "description": "Kafka consumer library.",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Emre Can İslambey",
+      "email": "emrecan.islambey@beyn.com.tr"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "require-dev": {
+    "php": "^7.3",
+    "kwn/php-rdkafka-stubs": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Consumer\\": "src/"
+    }
+  }
+}
