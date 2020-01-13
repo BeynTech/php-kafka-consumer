@@ -8,14 +8,14 @@ use Throwable;
 interface ConsumerInterface
 {
     /**
-     * @return array
-     */
-    public static function getProps(): array;
-
-    /**
      * @return string
      */
     public static function getTopic(): string;
+
+    /**
+     * @return array
+     */
+    public static function getProps(): array;
 
     /**
      * @param $message
