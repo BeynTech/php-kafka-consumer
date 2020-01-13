@@ -8,13 +8,11 @@ use Throwable;
 interface ConsumerInterface
 {
     /**
-     * @return array<string>
      * @return array
      */
     public static function getProps(): array;
 
     /**
-     * @return string
      * @return string
      */
     public static function getTopic(): string;

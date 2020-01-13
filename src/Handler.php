@@ -65,7 +65,6 @@ class Handler
     }
 
     /**
-     * @param array<TopicPartition>
      * @return array
      */
     private function getTopicPartitions(): array
