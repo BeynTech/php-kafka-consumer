@@ -31,7 +31,6 @@ class Handler
      * @param KafkaConsumer $kafkaConsumer
      * @param ConsumerInterface $consumer
      * @param array<int> $partitions
-     * @throws \Exception
      */
     public function __construct(
         KafkaConsumer $kafkaConsumer,
@@ -50,13 +49,16 @@ class Handler
      */
     public function handle(): void
     {
-        $this->kafkaConsumer->subscribe([$this->consumer::getTopic()]);
+        $topic = sprintf("%s.%s", $this->consumer::getTopic(), $this->consumer::getFormat());
+
+        $this->kafkaConsumer->subscribe([$topic]);
         $this->kafkaConsumer->assign($this->getTopicPartitions());
 
         while (true) {
             $message = $this->kafkaConsumer->consume(-1);
 
             if ($message->err !== RD_KAFKA_RESP_ERR_NO_ERROR) {
+                var_dump($message);
                 continue;
             }
 
@@ -71,7 +73,8 @@ class Handler
     {
         return array_map(
             function ($partition) {
-                return new TopicPartition($this->consumer::getTopic(), $partition);
+                $topic = sprintf("%s.%s", $this->consumer::getTopic(), $this->consumer::getFormat());
+                return new TopicPartition($topic, $partition);
             },
             $this->partitions
         );

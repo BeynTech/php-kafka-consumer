@@ -10,6 +10,11 @@ interface ConsumerInterface
     /**
      * @return string
      */
+    public static function getFormat(): string;
+
+    /**
+     * @return string
+     */
     public static function getTopic(): string;
 
     /**
