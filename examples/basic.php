@@ -16,6 +16,11 @@ $conf->set("group.id", "consumer-group-1");
 $kafkaConsumer = new KafkaConsumer($conf);
 $consumer = new class implements ConsumerInterface {
 
+    public static function getFormat(): string
+    {
+        return \Consumer\MessageFormat::JSON;
+    }
+
     /** @inheritDoc */
     public static function getProps(): array
     {
