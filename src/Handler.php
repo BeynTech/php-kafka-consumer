@@ -49,7 +49,7 @@ class Handler
      */
     public function handle(): void
     {
-        $topic = sprintf("%s.%s", $this->consumer::getTopic(), $this->consumer::getFormat());
+        $topic = sprintf("%s-%s", $this->consumer::getTopic(), $this->consumer::getFormat());
 
         $this->kafkaConsumer->subscribe([$topic]);
         $this->kafkaConsumer->assign($this->getTopicPartitions());
@@ -73,7 +73,7 @@ class Handler
     {
         return array_map(
             function ($partition) {
-                $topic = sprintf("%s.%s", $this->consumer::getTopic(), $this->consumer::getFormat());
+                $topic = sprintf("%s-%s", $this->consumer::getTopic(), $this->consumer::getFormat());
                 return new TopicPartition($topic, $partition);
             },
             $this->partitions

@@ -8,6 +8,9 @@
 - `handle` main handler.
 - `handleException` runs when `handle` throws exception.
 
+**!! WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide.
+To avoid issues it is best to use either, but not both.**
+
 ```php
 <?php
 
@@ -20,7 +23,7 @@ final class UserCreatedConsumer implements \Consumer\ConsumerInterface
     
     public static function getTopic(): string
     { 
-        return "user.created";
+        return "userCreated";
     }
  
     public static function getFormat(): string
