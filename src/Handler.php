@@ -58,7 +58,6 @@ class Handler
             $message = $this->kafkaConsumer->consume(-1);
 
             if ($message->err !== RD_KAFKA_RESP_ERR_NO_ERROR) {
-                var_dump($message);
                 continue;
             }
 
